@@ -6,25 +6,27 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use OpenApi\Annotations as OA;
 
 /**
- * @OA\Info(title="My First API", version="0.1")
- * @OA\PathItem (path="/api/user")
  * @OA\Schema(
  *   @OA\Property(
  *     property="id",
- *     type="string"
+ *     type="string",
+ *     format="uuid",
+ *     example="123e4567-e89b-12d3-a456-426614174000"
  *    ),
- *    @OA\Property(
+ *   @OA\Property(
  *     property="name",
- *     type="string"
- *    ),
- *    @OA\Property(
+ *     type="string",
+ *     example="Jane Doe"
+ *   ),
+ *   @OA\Property(
  *     property="phone",
  *     oneOf={
  *     	   @OA\Schema(type="string"),
  *     	   @OA\Schema(type="integer"),
- *     }
- *    ),
- *    example={"id": "a3fb6", "name": "Jessica Smith", "phone": 12345678}
+ *     },
+ *     example="+13490830498"
+ *   ),
+ *   example={"id": "a3fb6", "name": "Jessica Smith", "phone": "+1234567890123"}
  * )
  *
  */
