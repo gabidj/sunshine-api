@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\OpenApiSpec\Fields\LaravelTimestamps;
 use Illuminate\Http\Resources\Json\JsonResource;
 use OpenApi\Annotations as OA;
 
@@ -30,7 +31,7 @@ use OpenApi\Annotations as OA;
  * )
  *
  */
-class UserResource extends JsonResource
+class UserResource extends JsonResource implements LaravelTimestamps
 {
     /**
      * Transform the resource into an array.

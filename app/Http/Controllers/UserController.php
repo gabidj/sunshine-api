@@ -32,7 +32,7 @@ class UserController extends Controller
     * ),
     * @OA\Response(
     *     response=404,
-    *     description="successful operation",
+    *     description="User not found",
     *     @OA\MediaType(
     *         mediaType="application/json",
     *         @OA\Schema(ref="#/components/schemas/NotFound"),
