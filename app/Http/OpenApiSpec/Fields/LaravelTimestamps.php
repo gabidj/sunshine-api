@@ -9,12 +9,14 @@ use OpenApi\Annotations as OA;
  * @OA\Schema (
  *   @OA\Property(
  *       property="created_at",
- *       type="date-time",
+ *       type="string",
+ *       description="Laravel date-time",
  *       example="2022-01-04 12:34:56"
  *   ),
  *   @OA\Property(
  *       property="updated_at",
- *       type="date-time",
+ *       type="string",
+ *       description="Laravel date-time",
  *       example="2022-01-04 12:34:56"
  *   )
  * )
