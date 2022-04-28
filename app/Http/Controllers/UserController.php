@@ -79,6 +79,9 @@ class UserController extends Controller
 
     }
 
+    // DEMO:
+    // OA
+
     // WE CAN CONSIDER THIS ONE FOR EASIER "writability"
     /**
      * @OA\Get(path="/user", summary="Get One user", tags={"user"},
