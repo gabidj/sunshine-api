@@ -21,6 +21,34 @@ class UserController extends Controller
         return UserResource::collection(User::query()->select(['name', 'phone', 'id']));
     }
 
+    /**
+     * @OA\Get(path="/user",
+     *     tags={"user"},
+     *     summary="Get One user",
+     *     description="This can only be done by the logged in user.",
+     *     operationId="showUser",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(ref="#/components/schemas/UserWithEmailResource"),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *          response=500,
+     *         description="User not found",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(ref="#/components/schemas/InternalServerError"),
+     *         )
+     *     )
+     * )
+     */
+    public function me()
+    {
+
+    }
 
     /**
      * @OA\Get(path="/user",
