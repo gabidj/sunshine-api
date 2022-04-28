@@ -12,9 +12,31 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     *
-     *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @OA\Get(path="/users",
+     *     tags={"user"},
+     *     summary="Get One user",
+     *     security={
+     *         {"sunshine_auth": {"read:users"}}
+     *     },
+     *     description="This can only be done by the logged in user.",
+     *     operationId="showUserList",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(ref="#/components/schemas/UserWithEmailResource"),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *          response=404,
+     *         description="User not found",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(ref="#/components/schemas/NotFound"),
+     *         )
+     *     )
+     * )
      */
     public function index()
     {
@@ -22,11 +44,11 @@ class UserController extends Controller
     }
 
     /**
-     * @OA\Get(path="/user",
+     * @OA\Get(path="/user/me",
      *     tags={"user"},
      *     summary="Get One user",
      *     description="This can only be done by the logged in user.",
-     *     operationId="showUser",
+     *     operationId="showMe",
      *     @OA\Response(
      *         response=200,
      *         description="successful operation",
@@ -54,6 +76,9 @@ class UserController extends Controller
      * @OA\Get(path="/user",
      *     tags={"user"},
      *     summary="Get One user",
+     *     security={
+     *         {"sunshine_auth": {"read:users"}}
+     *     },
      *     description="This can only be done by the logged in user.",
      *     operationId="showUser",
      *     @OA\Response(
@@ -86,6 +111,9 @@ class UserController extends Controller
      *     summary="Create user",
      *     description="This can only be done by the logged in user.",
      *     operationId="createUser",
+     *     security={
+     *         {"sunshine_auth": {"write:users"}}
+     *     },
      *     @OA\RequestBody(
      *         required=true,
      *         description="Created user object",
