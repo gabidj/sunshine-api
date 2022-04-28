@@ -44,6 +44,13 @@ class UserController extends Controller
     }
 
     /**
+     */
+    public function myNewEndpoint()
+    {
+
+    }
+
+    /**
      * @OA\Get(path="/user/me",
      *     tags={"user"},
      *     summary="Get One user",
@@ -72,28 +79,19 @@ class UserController extends Controller
 
     }
 
+    // WE CAN CONSIDER THIS ONE FOR EASIER "writability"
     /**
-     * @OA\Get(path="/user",
-     *     tags={"user"},
-     *     summary="Get One user",
+     * @OA\Get(path="/user", summary="Get One user", tags={"user"},
+     *     description="This can only be done by the logged in user.",
+     *     operationId="showUser_ThisFieldIsOptional_ThisCouldBeTheRouteName",
      *     security={
      *         {"sunshine_auth": {"read:users"}}
      *     },
-     *     description="This can only be done by the logged in user.",
-     *     operationId="showUser",
-     *     @OA\Response(
-     *         response=200,
-     *         description="successful operation",
-     *         @OA\MediaType(
-     *             mediaType="application/json",
+     *     @OA\Response(response=200, description="successful operation", @OA\MediaType(mediaType="application/json",
      *             @OA\Schema(ref="#/components/schemas/UserWithEmailResource"),
      *         )
      *     ),
-     *     @OA\Response(
-     *          response=404,
-     *         description="User not found",
-     *         @OA\MediaType(
-     *             mediaType="application/json",
+     *     @OA\Response(response=404, description="User not found", @OA\MediaType(mediaType="application/json",
      *             @OA\Schema(ref="#/components/schemas/NotFound"),
      *         )
      *     )
