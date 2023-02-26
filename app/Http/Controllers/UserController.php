@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use OpenApi\Attributes\Schema;
 
 /**
  * @OA\PathItem (path="/api/user")
@@ -81,12 +82,43 @@ class UserController extends Controller
 
     // DEMO:
     // OA
-
+    /**
+     * @OA\Get(path="/user",
+          *     tags={"user"},
+          *     description="This can only be done by the logged in user.",
+          *     @OA\Response(
+          *         response=200,
+          *         description="successful operation",
+          *         @OA\MediaType(
+          *             mediaType="application/json",
+          *             @OA\Schema(ref="#/components/schemas/UserWithEmailResource"),
+          *         )
+          *     ),
+          *     @OA\Response(description="nu esti logat",
+              *     response=401, @OA\MediaType( mediaType="application/json",
+              *         @OA\Schema(ref="#/components/schemas/Unauthorized"),
+              *     )
+              * )
+          * ),
+        * @OA\Response(
+            *     response=404,
+            *     description="{cursor} not found",
+            *     @OA\MediaType(
+            *         mediaType="application/json",
+            *         @OA\Schema(ref="#/components/schemas/NotFound"),
+            *     )
+            * ),
+     *
+     *
+     */
+    public function someOtherUser()
+    {
+        return [];
+    }
     // WE CAN CONSIDER THIS ONE FOR EASIER "writability"
     /**
      * @OA\Get(path="/user", summary="Get One user", tags={"user"},
      *     description="This can only be done by the logged in user.",
-     *     operationId="showUser_ThisFieldIsOptional_ThisCouldBeTheRouteName",
      *     security={
      *         {"sunshine_auth": {"read:users"}}
      *     },
@@ -99,6 +131,10 @@ class UserController extends Controller
      *         )
      *     )
      * )
+     */
+    /**
+     * @param Request $request
+     * @return mixed
      */
     public function show(Request $request)
     {
