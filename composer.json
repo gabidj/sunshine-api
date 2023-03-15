@@ -9,6 +9,7 @@
         "aws/aws-sdk-php": "^3.222",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10",
+        "laravel/pennant": "^1.1",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.0",

@@ -22,3 +22,10 @@ Route::get('/', function () {
 Route::get('/s3', function () {
     Storage::disk('s3')->put('file2.txt', 'Contents', 'public');
 });
+
+
+Route::get('/feature', function () {
+    view('welcome');
+});
+
+
