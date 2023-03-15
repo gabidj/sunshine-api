@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use App\Listeners\LogUnknownFeatureUsage;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Laravel\Pennant\Events\FeatureResolved;
+use Laravel\Pennant\Events\UnknownFeatureResolved;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +21,15 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        // the feature events
+        FeatureResolved::class => [
+            // log the feature usage for analytics
+        ],
+        UnknownFeatureResolved::class => [
+            // do some alerting, this is a feature which is not recognized by the system
+            LogUnknownFeatureUsage::class
+        ]
     ];
 
     /**
